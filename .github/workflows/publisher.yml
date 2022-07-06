@@ -43,20 +43,20 @@ jobs:
         working-directory: ./${{ matrix.target_repo }}
         env:
           CI_BRANCH_NAME: ci/workflow-publisher-${{ github.sha }}
-      - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.RW_REPO}}
-          base: main
-          commit-message: "ci: workflow publisher"
-          committer: "GitHub Action <action@github.com>"
-          branch: ci/workflow-publisher-${{ github.sha }}
-          delete-branch: false
-          title: "ci: workflow publisher"
-          path: ./${{ matrix.target_repo }}
-      - name: Check outputs
-        if: ${{ steps.cpr.outputs.pull-request-number }}
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      # - name: Create Pull Request
+      #   id: cpr
+      #   uses: peter-evans/create-pull-request@v4
+      #   with:
+      #     token: ${{ secrets.RW_REPO}}
+      #     base: main
+      #     commit-message: "ci: workflow publisher"
+      #     committer: "GitHub Action <action@github.com>"
+      #     branch: ci/workflow-publisher-${{ github.sha }}
+      #     delete-branch: false
+      #     title: "ci: workflow publisher"
+      #     path: ./${{ matrix.target_repo }}
+      # - name: Check outputs
+      #   if: ${{ steps.cpr.outputs.pull-request-number }}
+      #   run: |
+      #     echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+      #     echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
