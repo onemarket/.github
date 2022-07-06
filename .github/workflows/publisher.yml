@@ -48,6 +48,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.RW_REPO}}
+          base: main
           commit-message: "ci: workflow publisher"
           committer: "GitHub Action <action@github.com>"
           branch: ci/workflow-publisher-${{ github.sha }}
