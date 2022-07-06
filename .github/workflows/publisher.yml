@@ -52,7 +52,7 @@ jobs:
           commit-message: "ci: workflow publisher"
           committer: "GitHub Action <action@github.com>"
           branch: ci/workflow-publisher-${{ github.sha }}
-          delete-branch: true
+          delete-branch: false
           title: "ci: workflow publisher"
           path: ./${{ matrix.target_repo }}
       - name: Check outputs
