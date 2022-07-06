@@ -46,11 +46,13 @@ jobs:
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
-        commit-message: "ci: workflow publisher"
-        committer: "GitHub Action <action@github.com>"
-        branch: ci/workflow-publisher-${{ github.sha }}
-        delete-branch: true
-        title: "ci: workflow publisher"
+        with:
+          token: ${{ secrets.RW_REPO}}
+          commit-message: "ci: workflow publisher"
+          committer: "GitHub Action <action@github.com>"
+          branch: ci/workflow-publisher-${{ github.sha }}
+          delete-branch: true
+          title: "ci: workflow publisher"
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
