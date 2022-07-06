@@ -35,6 +35,7 @@ jobs:
         # run function change
         # comment
         # second
+        # thrid
         check_pull_request(pr_title)
       shell: python
       env:
