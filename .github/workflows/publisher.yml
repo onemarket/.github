@@ -8,9 +8,6 @@ on:
 jobs:
   publish-workflow-template:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./${{ matrix.target_repo }}
     strategy:
       matrix:
         target_repo: [ 'musical-spork' , 'crispy-barnacle', 'cuddly-robot' ]
@@ -56,6 +53,7 @@ jobs:
           branch: ci/workflow-publisher-${{ github.sha }}
           delete-branch: true
           title: "ci: workflow publisher"
+          path: ./${{ matrix.target_repo }}
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
