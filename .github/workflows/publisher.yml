@@ -45,6 +45,7 @@ jobs:
           CI_BRANCH_NAME: ci/workflow-publisher-${{ github.sha }}
       - name: Create Pull Request
         id: cpr
+        working-directory: ./${{ matrix.target_repo }}
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.RW_REPO}}
