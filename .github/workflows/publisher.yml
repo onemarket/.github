@@ -26,9 +26,12 @@ jobs:
       - name: Update workflows
         shell: bash
         run: |
+          git checkout -b $CI_BRANCH_NAME
           mkdir -p .github/workflows/
           cp -r ../main/templates/* .github/
         working-directory: ./${{ matrix.target_repo }}
+        env:
+          CI_BRANCH_NAME: ci/workflow-publisher-${{ github.sha }}
       - name: Publish workflows
         shell: bash
         run: |
@@ -36,5 +39,20 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "Github Agent | Workflows has updated"
-          git push
+          git push -u origin $CI_BRANCH_NAME
         working-directory: ./${{ matrix.target_repo }}
+        env:
+          CI_BRANCH_NAME: ci/workflow-publisher-${{ github.sha }}
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        commit-message: "ci: workflow publisher"
+        committer: "GitHub Action <action@github.com>"
+        branch: ci/workflow-publisher-${{ github.sha }}
+        delete-branch: true
+        title: "ci: workflow publisher"
+      - name: Check outputs
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
