@@ -1,4 +1,3 @@
-
 ---
 name: 'Sprint Feature Glooming Session Template'
 about: 'Feature Glooming Session Template'

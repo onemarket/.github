@@ -1,3 +1,11 @@
+---
+name: Sprint Work Item
+about: Define a work item from the glooming session
+title: ''
+labels: ''
+assignees: ''
+
+---
 
 ## Description
 Brief summary of what this feature is, whether it's a larger project, goal, or user story. Describe the job to be done.
