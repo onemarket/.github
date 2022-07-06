@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target_repo: [ 'musical-spork' , 'crispy-barnacle' ]
+        target_repo: [ 'musical-spork' , 'crispy-barnacle', 'cuddly-robot' ]
     steps:
       - name: Checkout Workflows
         uses: actions/checkout@v2
