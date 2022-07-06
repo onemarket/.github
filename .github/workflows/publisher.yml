@@ -45,7 +45,6 @@ jobs:
           CI_BRANCH_NAME: ci/workflow-publisher-${{ github.sha }}
       - name: Create Pull Request
         id: cpr
-        working-directory: ./${{ matrix.target_repo }}
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.RW_REPO}}
@@ -54,6 +53,7 @@ jobs:
           branch: ci/workflow-publisher-${{ github.sha }}
           delete-branch: true
           title: "ci: workflow publisher"
+        working-directory: ./${{ matrix.target_repo }}
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
