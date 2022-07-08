@@ -13,7 +13,7 @@ jobs:
     - name : Print Title of PR
       run: echo The Title of your PR is ${{ github.event.pull_request.title }}
     - name: Check format of pull request title
-      run: python .github/workflows/scripts/run.py
+      run: python .github/workflows/scripts/validate_pr_title.py
       shell: sh
       env:
         GITHUB_PR_TITLE: ${{ github.event.pull_request.title }}
