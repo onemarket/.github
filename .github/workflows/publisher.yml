@@ -30,7 +30,7 @@ jobs:
           mkdir -p .github/workflows/
           mkdir docs
           cp -r ../main/templates/* .github/
-          cp docs/CONTRIBUTING.md docs/
+          cp ../main/docs/CONTRIBUTING.md docs/
         working-directory: ./${{ matrix.target_repo }}
         env:
           CI_BRANCH_NAME: ci/workflow-publisher-${{ github.sha }}
