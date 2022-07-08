@@ -4,6 +4,7 @@ on:
    branches: [ 'develop',  'master', 'main' ]
    paths:
    - 'templates/**'
+   - 'docs/CONTRIBUTING.md'
 
 jobs:
   publish-workflow-template:
@@ -27,7 +28,9 @@ jobs:
         shell: bash
         run: |
           mkdir -p .github/workflows/
+          mkdir docs
           cp -r ../main/templates/* .github/
+          cp docs/CONTRIBUTING.md docs/
         working-directory: ./${{ matrix.target_repo }}
         env:
           CI_BRANCH_NAME: ci/workflow-publisher-${{ github.sha }}
