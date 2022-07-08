@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p .github/workflows/
-          mkdir docs
+          mkdir -p docs/
           cp -r ../main/templates/* .github/
           cp ../main/docs/CONTRIBUTING.md docs/
         working-directory: ./${{ matrix.target_repo }}
