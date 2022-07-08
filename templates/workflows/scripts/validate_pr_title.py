@@ -12,7 +12,7 @@ def check_pull_request(title):
             print(option['description'])
             sys.exit(0)
 
-    print('Pull request title is not valid. Please use one of the following prefix:' + '\n' + '\n'.join(['  - ' + option['name'] + ' (' + option['description'] + ')' for option in options]) + '\n' + '\n' + 'Example: ' + '\n\t' + 'Fix: authentication failures for mobile users')
+    print('Pull request title is not valid. Please use one of the following prefix:' + '\n' + '\n'.join(['  - ' + option['name'] + ' (' + option['description'] + ')' for option in options]) + '\n' + '\n' + 'Example: ' + '\n\t' + 'fix: authentication failures for mobile users')
 
     sys.exit(1)
 
